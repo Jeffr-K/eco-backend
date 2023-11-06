@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://ght38sn9fyrzyy9irrzo:pscale_pw_18kn9VLc5VqK3I3kFE7mq4EDeuRdmXNwMCAkbSX0tmY@gcp.connect.psdb.cloud/ecodb?sslaccept=strict"
 }
 
 model countries {

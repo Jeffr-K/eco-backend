@@ -15,12 +15,7 @@ export const getEmployeeInfoService = async (data: { id: number; }) => {
         phone_number: true,
         hire_date: true,
         salary: true,
-        commission_pct: true,
-        employees: true,
-        jobs: true,
-        departments_departments_manager_idToemployees: true,
-        departments_employees_department_idTodepartments: true,
-        job_history: true
+        commission_pct: true
       },
       where: { employee_id: data.id },
     });
@@ -63,14 +58,14 @@ export const increaseEmployeeSalarySpecificDepartment = async (data: {
         const salary = Number(employee.salary);
         const increasePercentage = data.increasePercentage;
         const increasedSalary = salary + (salary * (increasePercentage / 100));
-        await prisma.employees.update({
+        const result = await prisma.employees.update({
           data: {
             salary: increasedSalary
           },
           where: {
             employee_id: employee.employee_id
           }
-        })
+        });
       });
   } catch (e) {
     console.log(e);

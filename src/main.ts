@@ -3,12 +3,15 @@ import cors from 'cors';
 import helmet from "helmet";
 import router from "./router";
 import { PrismaClient } from "@prisma/client";
-import favicon from "express-favicon";
+import swaggerUi from 'swagger-ui-express'
 import path from "path";
 import { config } from "dotenv";
+import { specs } from "./swagger";
 config();
 
 const app = express();
+
+
 
 app.use(helmet());
 app.use('/favicon.ico', express.static(path.join(__dirname, '../public/favicon.ico')));
@@ -31,9 +34,10 @@ app.get("/", (req, res) => {
 
 app.use('/api', router);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 export const prisma = new PrismaClient({
-  log: ["query"],
-  datasources: { db: { url: process.env.DATABASE_URL }}
+  log: ["query"]
 });
 
 const PORT = process.env.PORT || 3000;

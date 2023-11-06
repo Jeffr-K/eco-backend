@@ -32,10 +32,12 @@ app.get("/", (req, res) => {
 app.use('/api', router);
 
 export const prisma = new PrismaClient({
-  log: ["query"]
+  log: ["query"],
+  datasources: { db: { url: process.env.DATABASE_URL }}
 });
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Eco coding interview server start on port: ${PORT}`);
 });

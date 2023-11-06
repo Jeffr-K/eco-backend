@@ -5,13 +5,14 @@ import router from "./router";
 import { config } from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import favicon from "express-favicon";
+import path from "path";
 
 config();
 
 const app = express();
 
 app.use(helmet());
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(path.resolve(__dirname, "../public", "favicon.ico")));
 
 const whitelist = ["http://localhost:3000", "http://localhost:8000","http://127.0.0.1:3000", "http://127.0.0.1:8000"];
 
@@ -25,8 +26,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.status(200).send({ message: "server is running ok" })
-});
+  res.sendFile(path.resolve(__dirname, "../public", "index.html"))
+})
 
 app.use('/api', router);
 

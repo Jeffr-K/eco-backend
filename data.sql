@@ -1,16 +1,4 @@
-/**
-* You can copy, modify, distribute and perform the work, even for commercial purposes,
-* all without asking permission.
-*
-* @Author: Andrei N. CIOBANU
-*/
 
-DROP SCHEMA
-
-IF EXISTS hr;
-	CREATE SCHEMA hr COLLATE = utf8_general_ci;
-
-USE hr;
 
 /* ***************************************************************
 ***************************CREATING TABLES************************
@@ -2626,10 +2614,6 @@ VALUES (
 	);
 
 COMMIT;
-
-/* ***************************************************************
-***************************FOREIGN KEYS***************************
-**************************************************************** */
 
 ALTER TABLE countries ADD FOREIGN KEY (region_id) REFERENCES regions(region_id);
 ALTER TABLE locations ADD FOREIGN KEY (country_id) REFERENCES countries(country_id);

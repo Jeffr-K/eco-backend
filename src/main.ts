@@ -3,7 +3,7 @@ import cors from 'cors';
 import helmet from "helmet";
 import router from "./router";
 import { PrismaClient } from "@prisma/client";
-import swaggerUi from 'swagger-ui-express'
+import * as swaggerUi from 'swagger-ui-express';
 import path from "path";
 import { config } from "dotenv";
 import { specs } from "./swagger";

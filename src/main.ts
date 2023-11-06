@@ -31,11 +31,6 @@ app.get("/", (req, res) => {
 
 app.use('/api', router);
 
-app.use(function (req, res, next) {
-  res.setHeader("Content-Type", "application/json");
-  next();
-});
-
 export const prisma = new PrismaClient({
   log: ["query"]
 });

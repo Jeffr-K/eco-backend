@@ -24,9 +24,10 @@ const corsOptions : cors.CorsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).send({ message: "server is running ok" })
 });
+
 app.use('/api', router);
 
 app.use(function (req, res, next) {

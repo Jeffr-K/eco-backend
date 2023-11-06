@@ -35,7 +35,7 @@ export const prisma = new PrismaClient({
   log: ["query"]
 });
 
-
-app.listen(process.env.SERVER_PORT, () => {
-  console.log(`Eco coding interview server start on port: ${process.env.SERVER_PORT}`);
+const SERVER_PORT = process.env.SERVER_PORT || 3000;
+app.listen(SERVER_PORT, () => {
+  console.log(`Eco coding interview server start on port: ${SERVER_PORT}`);
 });

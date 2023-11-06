@@ -1,4 +1,8 @@
 import { prisma } from "./main";
+import axios from "axios";
+import { config } from "dotenv";
+config();
+
 
 export const getEmployeeInfoService = async (data: { id: number; }) => {
   try {
@@ -83,5 +87,11 @@ export const getDepartmentInfoWithPlace = async () => {
 }
 
 export const getCompanyDepartmentsPerGovernmentService = async () => {
-  // await prisma.jobs.findFirst();
+  const response = await axios.get(process.env.AXIOS_URL as string, {
+    headers: {
+      Authorization: process.env.ACCESS_KEY
+    }
+  });
+
+  return response.data;
 }

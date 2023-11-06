@@ -2,17 +2,17 @@ import express from "express";
 import cors from 'cors';
 import helmet from "helmet";
 import router from "./router";
-import { config } from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import favicon from "express-favicon";
 import path from "path";
-
+import { config } from "dotenv";
 config();
 
 const app = express();
 
 app.use(helmet());
-app.use(favicon(path.resolve(__dirname, "../public", "favicon.ico")));
+app.use('/favicon.ico', express.static(path.join(__dirname, '../public/favicon.ico')));
+
 
 const whitelist = ["*"];
 
